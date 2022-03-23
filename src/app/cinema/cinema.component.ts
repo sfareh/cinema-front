@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CinemaService } from '../services/cinema.service';
 
 @Component({
   selector: 'app-cinema',
@@ -10,15 +12,15 @@ export class CinemaComponent implements OnInit {
 
   public cities: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private cinemaService : CinemaService) { }
 
-  ngOnInit(): void {
-    this.httpClient.get("http://localhost:8080/cities")
+  ngOnInit() {
+    this.cinemaService.getCities()
     .subscribe(data => {
-      this.cities = data;
+     this.cities = data;
     }, err => {
-      console.log("error cinema.component.ts : " + err)
-    });
+      console.log( err);
+    })
   }
 
 }
