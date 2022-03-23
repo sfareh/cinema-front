@@ -2,9 +2,20 @@
   <div class="row">
     <div class="col-md-4">
       <ul *ngIf="cities" class="list-group mt-5">
-        <li *ngFor="let city of cities._embedded.cities" class="list-group-item">{{ city.name }}</li>
+        <li *ngFor="let city of cities._embedded.cities" class="list-group-item"
+        (click)="onGetCinema(city)">{{ city.name }}</li>
       </ul>
     </div>
-    <div class="col-md-8 mt-5">Cinémas</div>
-  </div>
+    <div class="col-md-8 mt-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">Cinemas list</div>
+        <div class="panel-body">
+          <ul *ngIf="cinemas" class="nav nav-pills">
+            <li *ngFor="let cinema of cinemas._embedded.cinemas" class="m-2">
+              <a href="">{{cinema.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 </div>

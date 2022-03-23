@@ -11,6 +11,7 @@ import { CinemaService } from '../services/cinema.service';
 export class CinemaComponent implements OnInit {
 
   public cities: any;
+  public cinemas: any;
 
   constructor(private cinemaService : CinemaService) { }
 
@@ -21,6 +22,15 @@ export class CinemaComponent implements OnInit {
     }, err => {
       console.log( err);
     })
+  }
+
+  onGetCinema(city: any){
+    this.cinemaService.getCinemas(city)
+    .subscribe(data => {
+      this.cinemas = data;
+     }, err => {
+       console.log( err);
+     })
   }
 
 }
